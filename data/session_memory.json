@@ -2,9 +2,9 @@
   "schemaVersion": "2025-11-25",
   "seedVersion": "2026-10-23.1",
   "meta": {
-    "revision": 1,
+    "revision": 29,
     "createdAt": "2026-10-23T17:30:00.000Z",
-    "updatedAt": "2026-10-23T17:30:00.000Z",
+    "updatedAt": "2026-10-23T18:29:14.170Z",
     "owner": "LexaFlow",
     "store": "data/session_memory.json"
   },
@@ -103,7 +103,8 @@
       "status": "online",
       "matter": false,
       "state": {
-        "volume": 4
+        "volume": 4,
+        "scene": "Patio Warm Glow"
       }
     },
     {
@@ -115,7 +116,7 @@
       "matter": true,
       "state": {
         "power": "on",
-        "brightness": 30,
+        "brightness": 45,
         "color": "Warm Amber",
         "hex": "#ffb86b"
       }
@@ -128,7 +129,7 @@
       "status": "online",
       "matter": true,
       "state": {
-        "targetTempF": 70,
+        "targetTempF": 68,
         "mode": "auto",
         "humidity": 41
       }
@@ -141,7 +142,7 @@
       "status": "online",
       "matter": true,
       "state": {
-        "power": "off",
+        "power": "on",
         "level": "low"
       }
     },
@@ -208,6 +209,49 @@
         "volume": 4
       },
       "createdAt": "2026-08-30T14:05:00.000Z"
+    },
+    {
+      "createdAt": "2026-10-23T18:25:27.728Z",
+      "id": "scene_patio_warm",
+      "name": "Patio Warm Glow",
+      "room": "Patio",
+      "status": "scheduled",
+      "schedule": {
+        "days": [
+          "Friday"
+        ],
+        "time": "19:00",
+        "label": "Friday at 7:00 PM"
+      },
+      "devices": [
+        "hue-patio",
+        "echo-dot-patio"
+      ],
+      "state": {
+        "color": "Warm Amber",
+        "hex": "#ffb86b",
+        "brightness": 45,
+        "power": "on"
+      },
+      "updatedAt": "2026-10-23T18:25:27.728Z"
+    },
+    {
+      "createdAt": "2026-10-23T18:25:57.413Z",
+      "id": "scene_bedroom_rest",
+      "name": "Restful Bedroom",
+      "room": "Bedroom",
+      "status": "active",
+      "schedule": null,
+      "devices": [
+        "thermostat-bedroom",
+        "humidifier-bedroom"
+      ],
+      "state": {
+        "targetTempF": 68,
+        "mode": "auto",
+        "humidifier": "low"
+      },
+      "updatedAt": "2026-10-23T18:25:57.413Z"
     }
   ],
   "routines": [
@@ -220,11 +264,13 @@
       ],
       "status": "active",
       "actions": [
-        "Bedroom lights to 40%",
-        "Weather + traffic briefing",
-        "Flight status check"
+        "Bedroom thermostat to 68°F",
+        "Humidifier on low",
+        "Weather and traffic briefing",
+        "Flight AS 214 status check",
+        "Recovery checklist reminder"
       ],
-      "updatedAt": "2026-10-01T09:00:00.000Z"
+      "updatedAt": "2026-10-23T18:25:57.498Z"
     }
   ],
   "activePlans": [
@@ -242,207 +288,90 @@
         "Gluten-free for Ben",
         "Vegetarian option for Maya"
       ],
-      "notes": "Patio dinner with warm string lights and a Latin jazz playlist.",
-      "updatedAt": "2026-10-22T19:12:00.000Z"
+      "notes": "Warm amber patio lights at 7 PM, Latin Jazz Dinner Party playlist queued, gluten-free cart verified for Ben, vegetarian chorizo for Maya.",
+      "updatedAt": "2026-10-23T18:25:28.023Z"
     }
   ],
   "commerce": {
     "activeCart": {
-      "id": "cart_demo_friday_taco_draft",
-      "merchant": "Whole Foods Market",
-      "status": "draft",
-      "occasion": "Friday Taco Night",
-      "servings": 6,
+      "id": "cart_8257779f-a6f7-47cc-9c66-ec2edcea49e6",
+      "merchant": "Amazon Fresh",
+      "status": "empty",
+      "occasion": null,
+      "servings": 0,
       "currency": "USD",
-      "items": [
-        {
-          "lineId": "line_seed_wf-tort-gf-08",
-          "sku": "WF-TORT-GF-08",
-          "name": "Gluten-Free Flour Tortillas",
-          "brand": "Siete Family Foods",
-          "category": "Bakery",
-          "unit": "8 ct",
-          "emoji": "🌮",
-          "accent": "#e9b872",
-          "quantity": 2,
-          "unitPrice": 6.49,
-          "lineTotal": 12.98,
-          "rating": 4.7,
-          "reviews": 942,
-          "dietaryTags": [
-            "Gluten-Free",
-            "Non-GMO",
-            "Paleo"
-          ],
-          "allergens": [],
-          "badges": [
-            "Gluten-Free",
-            "Non-GMO",
-            "Paleo"
-          ],
-          "swapOptions": [
-            {
-              "sku": "WF-TORT-CORN-ORG",
-              "name": "Organic Corn Shells",
-              "price": 5.49,
-              "dietaryTags": [
-                "Organic",
-                "Gluten-Free",
-                "Vegan"
-              ]
-            }
-          ]
-        },
-        {
-          "lineId": "line_seed_wf-tort-corn-org",
-          "sku": "WF-TORT-CORN-ORG",
-          "name": "Organic Corn Shells",
-          "brand": "365 by Whole Foods Market",
-          "category": "Bakery",
-          "unit": "8 ct",
-          "emoji": "🌽",
-          "accent": "#f7b733",
-          "quantity": 1,
-          "unitPrice": 5.49,
-          "lineTotal": 5.49,
-          "rating": 4.6,
-          "reviews": 1284,
-          "dietaryTags": [
-            "Organic",
-            "Gluten-Free",
-            "Vegan"
-          ],
-          "allergens": [],
-          "badges": [
-            "Organic",
-            "Gluten-Free",
-            "Vegan"
-          ],
-          "swapOptions": [
-            {
-              "sku": "WF-TORT-GF-08",
-              "name": "Gluten-Free Flour Tortillas",
-              "price": 6.49,
-              "dietaryTags": [
-                "Gluten-Free",
-                "Non-GMO",
-                "Paleo"
-              ]
-            }
-          ]
-        },
-        {
-          "lineId": "line_seed_af-chicken-thigh",
-          "sku": "AF-CHICKEN-THIGH",
-          "name": "Free-Range Chicken Thighs",
-          "brand": "Mary's Chicken",
-          "category": "Meat & Seafood",
-          "unit": "1 lb",
-          "emoji": "🍗",
-          "accent": "#e07a5f",
-          "quantity": 1,
-          "unitPrice": 8.99,
-          "lineTotal": 8.99,
-          "rating": 4.8,
-          "reviews": 673,
-          "dietaryTags": [
-            "High Protein",
-            "Gluten-Free"
-          ],
-          "allergens": [],
-          "badges": [
-            "High Protein",
-            "Gluten-Free"
-          ],
-          "swapOptions": [
-            {
-              "sku": "WF-CHORIZO-PLANT",
-              "name": "Plant-Based Chorizo",
-              "price": 5.99,
-              "dietaryTags": [
-                "Vegan",
-                "Gluten-Free",
-                "Non-GMO"
-              ]
-            }
-          ]
-        },
-        {
-          "lineId": "line_seed_wf-salsa",
-          "sku": "WF-SALSA",
-          "name": "Organic Chunky Salsa",
-          "brand": "365 by Whole Foods Market",
-          "category": "Pantry",
-          "unit": "16 oz",
-          "emoji": "🍅",
-          "accent": "#e4572e",
-          "quantity": 1,
-          "unitPrice": 4.29,
-          "lineTotal": 4.29,
-          "rating": 4.4,
-          "reviews": 1902,
-          "dietaryTags": [
-            "Organic",
-            "Vegan",
-            "Gluten-Free"
-          ],
-          "allergens": [],
-          "badges": [
-            "Organic",
-            "Vegan",
-            "Gluten-Free"
-          ],
-          "swapOptions": []
-        },
-        {
-          "lineId": "line_seed_wf-lime",
-          "sku": "WF-LIME",
-          "name": "Organic Limes",
-          "brand": "365 by Whole Foods Market",
-          "category": "Produce",
-          "unit": "each",
-          "emoji": "🍋",
-          "accent": "#a7c957",
-          "quantity": 3,
-          "unitPrice": 0.79,
-          "lineTotal": 2.37,
-          "rating": 4.7,
-          "reviews": 1450,
-          "dietaryTags": [
-            "Organic",
-            "Vegan",
-            "Gluten-Free"
-          ],
-          "allergens": [],
-          "badges": [
-            "Organic",
-            "Vegan",
-            "Gluten-Free"
-          ],
-          "swapOptions": []
-        }
-      ],
-      "subtotal": 34.12,
-      "tax": 2.93,
-      "total": 37.05,
+      "items": [],
       "budgetCap": 75,
-      "remainingBudget": 37.95,
-      "budgetStatus": "within",
       "flags": [],
       "verification": {
         "passed": true,
-        "checkedAllergens": [
-          "gluten"
-        ],
-        "blockedItems": [],
-        "message": "All items verified against the household allergy graph. Ben-safe."
+        "checkedAllergens": [],
+        "violations": [],
+        "message": "Cart is empty."
       },
       "changeLog": [],
-      "confirmationToken": "vp_demo_friday_taco_draft",
-      "createdAt": "2026-10-23T16:04:00.000Z",
-      "updatedAt": "2026-10-23T16:04:00.000Z"
+      "confirmationToken": null,
+      "createdAt": "2026-10-23T18:26:37.513Z",
+      "subtotal": 0,
+      "tax": 0,
+      "total": 0,
+      "remainingBudget": 75,
+      "budgetStatus": "within",
+      "itemCount": 0,
+      "updatedAt": "2026-10-23T18:26:37.513Z"
     },
-    "lastOrder": null,
+    "lastOrder": {
+      "id": "ord_af_1792779997512",
+      "merchant": "Amazon Fresh",
+      "date": "2026-10-23",
+      "purchasedAt": "2026-10-23T18:26:37.513Z",
+      "total": 23.63,
+      "subtotal": 21.76,
+      "tax": 1.87,
+      "itemCount": 4,
+      "items": [
+        {
+          "sku": "AF-SOUP-GF",
+          "name": "Chicken & Rice Soup",
+          "quantity": 1,
+          "lineTotal": 4.99
+        },
+        {
+          "sku": "WF-ELECTROLYTE",
+          "name": "Electrolyte Hydration Packets",
+          "quantity": 1,
+          "lineTotal": 8.99
+        },
+        {
+          "sku": "WF-TEA-GINGER",
+          "name": "Organic Ginger Tea",
+          "quantity": 1,
+          "lineTotal": 4.29
+        },
+        {
+          "sku": "WF-TISSUES",
+          "name": "Ultra Soft Tissues",
+          "quantity": 1,
+          "lineTotal": 3.49
+        }
+      ],
+      "occasion": "Cold recovery kit",
+      "status": "confirmed",
+      "eta": "Today, 2-hour delivery",
+      "paymentMethod": "Amazon Pay · Visa •••• 4821",
+      "confirmation": {
+        "method": "ui_tap",
+        "tokenVerified": true,
+        "allergyVerification": {
+          "passed": true,
+          "checkedAllergens": [
+            "gluten"
+          ],
+          "violations": [],
+          "message": "All 4 items verified against: gluten. No conflicts found."
+        }
+      }
+    },
     "orderHistory": [
       {
         "id": "ord_wf_20260926",
@@ -470,6 +399,58 @@
         "itemCount": 4,
         "occasion": "Cold recovery kit",
         "status": "delivered"
+      },
+      {
+        "id": "ord_af_1792779997512",
+        "merchant": "Amazon Fresh",
+        "date": "2026-10-23",
+        "purchasedAt": "2026-10-23T18:26:37.513Z",
+        "total": 23.63,
+        "subtotal": 21.76,
+        "tax": 1.87,
+        "itemCount": 4,
+        "items": [
+          {
+            "sku": "AF-SOUP-GF",
+            "name": "Chicken & Rice Soup",
+            "quantity": 1,
+            "lineTotal": 4.99
+          },
+          {
+            "sku": "WF-ELECTROLYTE",
+            "name": "Electrolyte Hydration Packets",
+            "quantity": 1,
+            "lineTotal": 8.99
+          },
+          {
+            "sku": "WF-TEA-GINGER",
+            "name": "Organic Ginger Tea",
+            "quantity": 1,
+            "lineTotal": 4.29
+          },
+          {
+            "sku": "WF-TISSUES",
+            "name": "Ultra Soft Tissues",
+            "quantity": 1,
+            "lineTotal": 3.49
+          }
+        ],
+        "occasion": "Cold recovery kit",
+        "status": "confirmed",
+        "eta": "Today, 2-hour delivery",
+        "paymentMethod": "Amazon Pay · Visa •••• 4821",
+        "confirmation": {
+          "method": "ui_tap",
+          "tokenVerified": true,
+          "allergyVerification": {
+            "passed": true,
+            "checkedAllergens": [
+              "gluten"
+            ],
+            "violations": [],
+            "message": "All 4 items verified against: gluten. No conflicts found."
+          }
+        }
       }
     ]
   },
@@ -480,12 +461,69 @@
       "provider": "Amazon Music",
       "trackCount": 18,
       "status": "queued",
-      "updatedAt": "2026-10-22T19:12:00.000Z"
+      "updatedAt": "2026-10-23T18:25:27.826Z"
     },
-    "recentCarousels": []
+    "recentCarousels": [
+      {
+        "id": "carousel_device_1792779384170",
+        "type": "device",
+        "title": "Home & Ring Camera Feeds",
+        "cardCount": 5,
+        "renderedAt": "2026-10-23T18:16:24.170Z"
+      },
+      {
+        "id": "carousel_music_1792779774550",
+        "type": "music",
+        "title": "Latin Jazz Dinner Party",
+        "cardCount": 6,
+        "renderedAt": "2026-10-23T18:22:54.550Z"
+      },
+      {
+        "id": "carousel_recipe_1792779774559",
+        "type": "recipe",
+        "title": "Gluten-Free Taco Night",
+        "cardCount": 6,
+        "renderedAt": "2026-10-23T18:22:54.559Z"
+      },
+      {
+        "id": "carousel_device_1792779774567",
+        "type": "device",
+        "title": "Home & Ring Camera Feeds",
+        "cardCount": 5,
+        "renderedAt": "2026-10-23T18:22:54.567Z"
+      },
+      {
+        "id": "carousel_music_1792779927826",
+        "type": "music",
+        "title": "Latin Jazz Dinner Party",
+        "cardCount": 6,
+        "renderedAt": "2026-10-23T18:25:27.826Z"
+      },
+      {
+        "id": "carousel_recipe_1792779927922",
+        "type": "recipe",
+        "title": "Gluten-Free Taco Night",
+        "cardCount": 6,
+        "renderedAt": "2026-10-23T18:25:27.922Z"
+      },
+      {
+        "id": "carousel_routine_1792779957670",
+        "type": "routine",
+        "title": "6:00 AM Flight Wake-Up Briefing",
+        "cardCount": 5,
+        "renderedAt": "2026-10-23T18:25:57.670Z"
+      },
+      {
+        "id": "carousel_device_1792779957784",
+        "type": "device",
+        "title": "Home & Ring Camera Feeds",
+        "cardCount": 5,
+        "renderedAt": "2026-10-23T18:25:57.784Z"
+      }
+    ]
   },
   "conversation": {
-    "summary": "The household planned Friday Taco Night for six, confirmed Ben needs strict gluten-free food, and left a draft taco cart ready for review.",
+    "summary": "Alexa, prepare a grocery shopping list for dinner tonight. → Your cart is empty right now. I can build a taco cart, a recovery kit, or a breakfast restock.",
     "turns": [
       {
         "id": "turn_seed_001",
@@ -500,12 +538,196 @@
         "assistant": "Friday Taco Night for six at 6:30 PM on the patio, gluten-free for Ben, with a vegetarian option for Maya. Your draft cart is ready whenever you are.",
         "intent": "recall",
         "timestamp": "2026-10-23T16:05:00.000Z"
+      },
+      {
+        "id": "turn_27a777d6-8912-450c-82b2-c256b03861b8",
+        "user": "hello",
+        "assistant": "I'm LexaFlow, your stateful Alexa+ household orchestrator. I can coordinate memory, Amazon Fresh carts, Matter and Ring scenes, and multimodal carousels in one turn. Your next plan is Friday Taco Night on Friday, Oct 30. There is a 5-item draft cart totaling $37.05. Try a demo scenario above — host Taco Night for six, handle a sick day before an 8 AM flight, or recall Friday's plan and swap the tortillas.",
+        "intent": "general",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Search cross-session memory",
+            "ok": true,
+            "durationMs": 59
+          }
+        ],
+        "timestamp": "2026-10-23T18:18:16.397Z"
+      },
+      {
+        "id": "turn_6d9ec82e-7d0a-4b69-be31-01105b7a357b",
+        "user": "i am nisha",
+        "assistant": "I'm LexaFlow, your stateful Alexa+ household orchestrator. I can coordinate memory, Amazon Fresh carts, Matter and Ring scenes, and multimodal carousels in one turn. Your next plan is Friday Taco Night on Friday, Oct 30. There is a 5-item draft cart totaling $37.05. Try a demo scenario above — host Taco Night for six, handle a sick day before an 8 AM flight, or recall Friday's plan and swap the tortillas.",
+        "intent": "general",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Search cross-session memory",
+            "ok": true,
+            "durationMs": 58
+          }
+        ],
+        "timestamp": "2026-10-23T18:19:23.088Z"
+      },
+      {
+        "id": "turn_ae80bbf0-2ed1-44c9-bc29-18ba74adfc85",
+        "user": "Alexa, host Taco Night for 6 on Friday—Ben is gluten-free, set patio lights to warm at 7 PM, and queue Latin Jazz.",
+        "assistant": "Done — Friday Taco Night for 6 is locked in for Friday, Oct 30 at 6:30 PM on the patio. I built a Whole Foods Market cart with 12 items for $74.09; every item passed Ben's gluten-free allergy check, with plant-based chorizo for Maya. The patio lights are scheduled for warm amber at 7 PM. The Latin Jazz Dinner Party playlist is queued. The six-step recipe cards are on screen. Tap Confirm Alexa+ Voice Purchase when you are ready, or tell me to swap anything first.",
+        "intent": "host",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Load household memory",
+            "ok": true,
+            "durationMs": 57
+          },
+          {
+            "name": "commerce_build_and_purchase_cart",
+            "title": "Build Friday Taco Night cart",
+            "ok": true,
+            "durationMs": 81
+          },
+          {
+            "name": "smarthome_orchestrate_scene",
+            "title": "Schedule Patio Warm Glow scene",
+            "ok": true,
+            "durationMs": 82
+          },
+          {
+            "name": "media_render_multimodal_carousel",
+            "title": "Render music carousel",
+            "ok": true,
+            "durationMs": 104
+          },
+          {
+            "name": "media_render_multimodal_carousel",
+            "title": "Render recipe carousel",
+            "ok": true,
+            "durationMs": 94
+          },
+          {
+            "name": "memory_get_or_update",
+            "title": "Persist plan: Friday Taco Night",
+            "ok": true,
+            "durationMs": 97
+          }
+        ],
+        "timestamp": "2026-10-23T18:25:28.028Z"
+      },
+      {
+        "id": "turn_918001fb-d6e1-484a-b811-41e80586801c",
+        "user": "Alexa, I'm feeling under the weather and have an 8 AM flight—adjust bedroom climate, reorder my cold recovery kit under $25, and set a wake-up briefing.",
+        "assistant": "I have got you. The bedroom is set to 68°F with the humidifier on low. I built a Amazon Fresh cold recovery kit with 4 items for $23.63 — all gluten-free and under your $25.00 cap. Dropped Cold-Pressed Orange Juice ($5.49) to stay under the $25.00 budget. The Flight Day Wake-Up briefing is scheduled for 6:00 AM with weather, traffic, and flight AS 214. Your five-card morning briefing is on screen. I also pulled up the Ring and bedroom device feeds. Tap Confirm Alexa+ Voice Purchase to restock the kit when you are ready.",
+        "intent": "wellness",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Load household memory",
+            "ok": true,
+            "durationMs": 66
+          },
+          {
+            "name": "smarthome_orchestrate_scene",
+            "title": "Adjust Bedroom climate",
+            "ok": true,
+            "durationMs": 69
+          },
+          {
+            "name": "smarthome_orchestrate_scene",
+            "title": "Create Flight Day Wake-Up routine",
+            "ok": true,
+            "durationMs": 85
+          },
+          {
+            "name": "commerce_build_and_purchase_cart",
+            "title": "Build Cold recovery kit cart",
+            "ok": true,
+            "durationMs": 84
+          },
+          {
+            "name": "media_render_multimodal_carousel",
+            "title": "Render routine carousel",
+            "ok": true,
+            "durationMs": 98
+          },
+          {
+            "name": "media_render_multimodal_carousel",
+            "title": "Render device carousel",
+            "ok": true,
+            "durationMs": 112
+          },
+          {
+            "name": "memory_get_or_update",
+            "title": "Store fact: recovery_flight_plan",
+            "ok": true,
+            "durationMs": 102
+          }
+        ],
+        "timestamp": "2026-10-23T18:25:57.901Z"
+      },
+      {
+        "id": "turn_48e9f603-ce81-44a4-b71f-4235daa7be2b",
+        "user": "Hello.",
+        "assistant": "I'm LexaFlow, your stateful Alexa+ household orchestrator. I can coordinate memory, Amazon Fresh carts, Matter and Ring scenes, and multimodal carousels in one turn. Your next plan is Friday Taco Night on Friday, Oct 30. There is a 0-item empty cart totaling $0.00. Try a demo scenario above — host Taco Night for six, handle a sick day before an 8 AM flight, or recall Friday's plan and swap the tortillas.",
+        "intent": "general",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Search cross-session memory",
+            "ok": true,
+            "durationMs": 62
+          }
+        ],
+        "timestamp": "2026-10-23T18:27:00.973Z"
+      },
+      {
+        "id": "turn_e0ffb45b-51b8-489a-a45e-ec1613664eb5",
+        "user": "Hello.",
+        "assistant": "I'm LexaFlow, your stateful Alexa+ household orchestrator. I can coordinate memory, Amazon Fresh carts, Matter and Ring scenes, and multimodal carousels in one turn. Your next plan is Friday Taco Night on Friday, Oct 30. There is a 0-item empty cart totaling $0.00. Try a demo scenario above — host Taco Night for six, handle a sick day before an 8 AM flight, or recall Friday's plan and swap the tortillas.",
+        "intent": "general",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Search cross-session memory",
+            "ok": true,
+            "durationMs": 71
+          }
+        ],
+        "timestamp": "2026-10-23T18:27:14.539Z"
+      },
+      {
+        "id": "turn_e345b7cc-5e14-4d30-b86f-2a7d98b384a6",
+        "user": "Alexa, prepare a grocery shopping list for dinner tonight.",
+        "assistant": "Your cart is empty right now. I can build a taco cart, a recovery kit, or a breakfast restock.",
+        "intent": "commerce",
+        "source": "fallback",
+        "toolCalls": [
+          {
+            "name": "memory_get_or_update",
+            "title": "Load household memory",
+            "ok": true,
+            "durationMs": 58
+          },
+          {
+            "name": "commerce_build_and_purchase_cart",
+            "title": "Read active cart",
+            "ok": true,
+            "durationMs": 67
+          }
+        ],
+        "timestamp": "2026-10-23T18:29:14.170Z"
       }
     ],
-    "lastUserUtterance": "Alexa, what did we decide about Friday's dinner?",
-    "lastAlexaResponse": "Friday Taco Night for six at 6:30 PM on the patio, gluten-free for Ben, with a vegetarian option for Maya. Your draft cart is ready whenever you are.",
-    "lastIntent": "recall",
-    "updatedAt": "2026-10-23T16:05:00.000Z"
+    "lastUserUtterance": "Alexa, prepare a grocery shopping list for dinner tonight.",
+    "lastAlexaResponse": "Your cart is empty right now. I can build a taco cart, a recovery kit, or a breakfast restock.",
+    "lastIntent": "commerce",
+    "updatedAt": "2026-10-23T18:29:14.170Z"
   },
   "facts": [
     {
@@ -529,11 +751,11 @@
     {
       "id": "fact_friday_taco_night",
       "key": "friday_taco_night",
-      "value": "Friday Taco Night for six is planned for the patio at 6:30 PM, with warm string lights and a Latin jazz playlist.",
+      "value": "Friday Taco Night for 6 is confirmed for 2026-10-30 at 6:30 PM on the patio with warm lights and Latin jazz.",
       "category": "plan",
       "confidence": 0.98,
       "createdAt": "2026-10-22T19:12:00.000Z",
-      "confirmedAt": "2026-10-22T19:12:00.000Z"
+      "confirmedAt": "2026-10-23T18:25:28.023Z"
     },
     {
       "id": "fact_grocery_budget",
@@ -561,6 +783,24 @@
       "confidence": 0.88,
       "createdAt": "2026-08-28T15:22:00.000Z",
       "confirmedAt": "2026-09-30T14:10:00.000Z"
+    },
+    {
+      "id": "fact_friday_taco_night_plan",
+      "key": "friday_taco_night_plan",
+      "value": "Friday Taco Night on 2026-10-30 at 18:30 for 6 guests. Warm amber patio lights at 7 PM, Latin Jazz Dinner Party playlist queued, gluten-free cart verified for Ben, vegetarian chorizo for Maya.",
+      "category": "plan",
+      "confidence": 0.97,
+      "createdAt": "2026-10-23T18:25:28.023Z",
+      "confirmedAt": "2026-10-23T18:25:28.023Z"
+    },
+    {
+      "id": "fact_recovery_flight_plan",
+      "key": "recovery_flight_plan",
+      "value": "Maya is under the weather before her 8:00 AM Monday flight. Bedroom is set to 68°F with the humidifier on low; a 6:00 AM wake-up briefing and a recovery kit under $25 are ready.",
+      "category": "schedule",
+      "confidence": 0.96,
+      "createdAt": "2026-10-23T18:25:57.893Z",
+      "confirmedAt": "2026-10-23T18:25:57.893Z"
     }
   ]
 }
