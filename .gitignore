@@ -11,6 +11,7 @@ coverage/
 tmp/
 data/*.tmp
 data/*.bak
+data/
 
 # Local-only hackathon material (never published)
 Docs/
