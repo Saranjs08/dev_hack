@@ -1,0 +1,566 @@
+{
+  "schemaVersion": "2025-11-25",
+  "seedVersion": "2026-10-23.1",
+  "meta": {
+    "revision": 1,
+    "createdAt": "2026-10-23T17:30:00.000Z",
+    "updatedAt": "2026-10-23T17:30:00.000Z",
+    "owner": "LexaFlow",
+    "store": "data/session_memory.json"
+  },
+  "household": {
+    "id": "hh_rivera_001",
+    "name": "Rivera Household",
+    "primaryUser": "Maya",
+    "timezone": "America/Los_Angeles",
+    "location": "Seattle, WA",
+    "members": [
+      {
+        "id": "maya",
+        "name": "Maya",
+        "role": "owner",
+        "dietary": [
+          "vegetarian"
+        ],
+        "allergies": [],
+        "notes": "Prefers organic produce and Latin jazz while cooking."
+      },
+      {
+        "id": "ben",
+        "name": "Ben",
+        "role": "child",
+        "dietary": [
+          "gluten-free"
+        ],
+        "allergies": [
+          {
+            "allergen": "gluten",
+            "severity": "high"
+          }
+        ],
+        "notes": "High-severity gluten allergy. Never add products with a gluten allergen flag."
+      },
+      {
+        "id": "alex",
+        "name": "Alex",
+        "role": "partner",
+        "dietary": [],
+        "allergies": [],
+        "notes": "Handles school pickup on Tuesdays and Thursdays."
+      }
+    ],
+    "allergies": [
+      {
+        "member": "Ben",
+        "allergen": "gluten",
+        "severity": "high",
+        "verifiedAt": "2026-09-02T18:22:00.000Z"
+      }
+    ],
+    "dietaryProfiles": [
+      {
+        "member": "Maya",
+        "preference": "vegetarian",
+        "source": "voice preference"
+      },
+      {
+        "member": "Ben",
+        "preference": "gluten-free",
+        "source": "pediatrician note"
+      }
+    ],
+    "budgetCaps": {
+      "groceryPerOrder": 75,
+      "monthlyGrocery": 320,
+      "recoveryKit": 25
+    },
+    "preferences": {
+      "music": "Latin jazz, bossa nova",
+      "lighting": "Warm amber after sunset",
+      "coffee": "Oat milk lattes, Oatly Barista",
+      "store": "Whole Foods Market for produce, Amazon Fresh for restocks",
+      "quietHours": "22:00-07:00"
+    }
+  },
+  "connectedDevices": [
+    {
+      "id": "echo-show-15",
+      "name": "Kitchen Echo Show 15",
+      "type": "echo",
+      "room": "Kitchen",
+      "status": "online",
+      "matter": true,
+      "state": {
+        "display": "LexaFlow",
+        "volume": 5
+      }
+    },
+    {
+      "id": "echo-dot-patio",
+      "name": "Patio Echo Dot",
+      "type": "echo",
+      "room": "Patio",
+      "status": "online",
+      "matter": false,
+      "state": {
+        "volume": 4
+      }
+    },
+    {
+      "id": "hue-patio",
+      "name": "Patio String Lights",
+      "type": "matter-light",
+      "room": "Patio",
+      "status": "online",
+      "matter": true,
+      "state": {
+        "power": "on",
+        "brightness": 30,
+        "color": "Warm Amber",
+        "hex": "#ffb86b"
+      }
+    },
+    {
+      "id": "thermostat-bedroom",
+      "name": "Bedroom Thermostat",
+      "type": "matter-thermostat",
+      "room": "Bedroom",
+      "status": "online",
+      "matter": true,
+      "state": {
+        "targetTempF": 70,
+        "mode": "auto",
+        "humidity": 41
+      }
+    },
+    {
+      "id": "humidifier-bedroom",
+      "name": "Bedroom Humidifier",
+      "type": "matter-humidifier",
+      "room": "Bedroom",
+      "status": "online",
+      "matter": true,
+      "state": {
+        "power": "off",
+        "level": "low"
+      }
+    },
+    {
+      "id": "ring-doorbell",
+      "name": "Front Door Ring",
+      "type": "ring-doorbell",
+      "room": "Entry",
+      "status": "online",
+      "matter": false,
+      "state": {
+        "battery": 92,
+        "motion": "clear",
+        "lastEvent": "Package delivered · 2:14 PM"
+      }
+    },
+    {
+      "id": "ring-cam-backyard",
+      "name": "Backyard Ring Cam",
+      "type": "ring-camera",
+      "room": "Backyard",
+      "status": "online",
+      "matter": false,
+      "state": {
+        "battery": 78,
+        "motion": "clear",
+        "lastEvent": "No motion for 3 hours"
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_movie_dim",
+      "name": "Movie Night Dim",
+      "room": "Living Room",
+      "status": "saved",
+      "schedule": null,
+      "devices": [
+        "hue-patio"
+      ],
+      "state": {
+        "color": "Deep Indigo",
+        "hex": "#4c4f9e",
+        "brightness": 18
+      },
+      "createdAt": "2026-09-14T20:12:00.000Z"
+    },
+    {
+      "id": "scene_morning_kitchen",
+      "name": "Good Morning Kitchen",
+      "room": "Kitchen",
+      "status": "active",
+      "schedule": {
+        "days": [
+          "Weekdays"
+        ],
+        "time": "06:45"
+      },
+      "devices": [
+        "echo-show-15"
+      ],
+      "state": {
+        "briefing": true,
+        "volume": 4
+      },
+      "createdAt": "2026-08-30T14:05:00.000Z"
+    }
+  ],
+  "routines": [
+    {
+      "id": "routine_flight_wakeup",
+      "name": "Flight Day Wake-Up",
+      "time": "06:00",
+      "days": [
+        "Monday"
+      ],
+      "status": "active",
+      "actions": [
+        "Bedroom lights to 40%",
+        "Weather + traffic briefing",
+        "Flight status check"
+      ],
+      "updatedAt": "2026-10-01T09:00:00.000Z"
+    }
+  ],
+  "activePlans": [
+    {
+      "id": "plan_friday_taco_night",
+      "title": "Friday Taco Night",
+      "type": "dinner",
+      "date": "2026-10-30",
+      "time": "18:30",
+      "guests": 6,
+      "status": "confirmed",
+      "location": "Patio",
+      "budgetCap": 75,
+      "dietaryConstraints": [
+        "Gluten-free for Ben",
+        "Vegetarian option for Maya"
+      ],
+      "notes": "Patio dinner with warm string lights and a Latin jazz playlist.",
+      "updatedAt": "2026-10-22T19:12:00.000Z"
+    }
+  ],
+  "commerce": {
+    "activeCart": {
+      "id": "cart_demo_friday_taco_draft",
+      "merchant": "Whole Foods Market",
+      "status": "draft",
+      "occasion": "Friday Taco Night",
+      "servings": 6,
+      "currency": "USD",
+      "items": [
+        {
+          "lineId": "line_seed_wf-tort-gf-08",
+          "sku": "WF-TORT-GF-08",
+          "name": "Gluten-Free Flour Tortillas",
+          "brand": "Siete Family Foods",
+          "category": "Bakery",
+          "unit": "8 ct",
+          "emoji": "🌮",
+          "accent": "#e9b872",
+          "quantity": 2,
+          "unitPrice": 6.49,
+          "lineTotal": 12.98,
+          "rating": 4.7,
+          "reviews": 942,
+          "dietaryTags": [
+            "Gluten-Free",
+            "Non-GMO",
+            "Paleo"
+          ],
+          "allergens": [],
+          "badges": [
+            "Gluten-Free",
+            "Non-GMO",
+            "Paleo"
+          ],
+          "swapOptions": [
+            {
+              "sku": "WF-TORT-CORN-ORG",
+              "name": "Organic Corn Shells",
+              "price": 5.49,
+              "dietaryTags": [
+                "Organic",
+                "Gluten-Free",
+                "Vegan"
+              ]
+            }
+          ]
+        },
+        {
+          "lineId": "line_seed_wf-tort-corn-org",
+          "sku": "WF-TORT-CORN-ORG",
+          "name": "Organic Corn Shells",
+          "brand": "365 by Whole Foods Market",
+          "category": "Bakery",
+          "unit": "8 ct",
+          "emoji": "🌽",
+          "accent": "#f7b733",
+          "quantity": 1,
+          "unitPrice": 5.49,
+          "lineTotal": 5.49,
+          "rating": 4.6,
+          "reviews": 1284,
+          "dietaryTags": [
+            "Organic",
+            "Gluten-Free",
+            "Vegan"
+          ],
+          "allergens": [],
+          "badges": [
+            "Organic",
+            "Gluten-Free",
+            "Vegan"
+          ],
+          "swapOptions": [
+            {
+              "sku": "WF-TORT-GF-08",
+              "name": "Gluten-Free Flour Tortillas",
+              "price": 6.49,
+              "dietaryTags": [
+                "Gluten-Free",
+                "Non-GMO",
+                "Paleo"
+              ]
+            }
+          ]
+        },
+        {
+          "lineId": "line_seed_af-chicken-thigh",
+          "sku": "AF-CHICKEN-THIGH",
+          "name": "Free-Range Chicken Thighs",
+          "brand": "Mary's Chicken",
+          "category": "Meat & Seafood",
+          "unit": "1 lb",
+          "emoji": "🍗",
+          "accent": "#e07a5f",
+          "quantity": 1,
+          "unitPrice": 8.99,
+          "lineTotal": 8.99,
+          "rating": 4.8,
+          "reviews": 673,
+          "dietaryTags": [
+            "High Protein",
+            "Gluten-Free"
+          ],
+          "allergens": [],
+          "badges": [
+            "High Protein",
+            "Gluten-Free"
+          ],
+          "swapOptions": [
+            {
+              "sku": "WF-CHORIZO-PLANT",
+              "name": "Plant-Based Chorizo",
+              "price": 5.99,
+              "dietaryTags": [
+                "Vegan",
+                "Gluten-Free",
+                "Non-GMO"
+              ]
+            }
+          ]
+        },
+        {
+          "lineId": "line_seed_wf-salsa",
+          "sku": "WF-SALSA",
+          "name": "Organic Chunky Salsa",
+          "brand": "365 by Whole Foods Market",
+          "category": "Pantry",
+          "unit": "16 oz",
+          "emoji": "🍅",
+          "accent": "#e4572e",
+          "quantity": 1,
+          "unitPrice": 4.29,
+          "lineTotal": 4.29,
+          "rating": 4.4,
+          "reviews": 1902,
+          "dietaryTags": [
+            "Organic",
+            "Vegan",
+            "Gluten-Free"
+          ],
+          "allergens": [],
+          "badges": [
+            "Organic",
+            "Vegan",
+            "Gluten-Free"
+          ],
+          "swapOptions": []
+        },
+        {
+          "lineId": "line_seed_wf-lime",
+          "sku": "WF-LIME",
+          "name": "Organic Limes",
+          "brand": "365 by Whole Foods Market",
+          "category": "Produce",
+          "unit": "each",
+          "emoji": "🍋",
+          "accent": "#a7c957",
+          "quantity": 3,
+          "unitPrice": 0.79,
+          "lineTotal": 2.37,
+          "rating": 4.7,
+          "reviews": 1450,
+          "dietaryTags": [
+            "Organic",
+            "Vegan",
+            "Gluten-Free"
+          ],
+          "allergens": [],
+          "badges": [
+            "Organic",
+            "Vegan",
+            "Gluten-Free"
+          ],
+          "swapOptions": []
+        }
+      ],
+      "subtotal": 34.12,
+      "tax": 2.93,
+      "total": 37.05,
+      "budgetCap": 75,
+      "remainingBudget": 37.95,
+      "budgetStatus": "within",
+      "flags": [],
+      "verification": {
+        "passed": true,
+        "checkedAllergens": [
+          "gluten"
+        ],
+        "blockedItems": [],
+        "message": "All items verified against the household allergy graph. Ben-safe."
+      },
+      "changeLog": [],
+      "confirmationToken": "vp_demo_friday_taco_draft",
+      "createdAt": "2026-10-23T16:04:00.000Z",
+      "updatedAt": "2026-10-23T16:04:00.000Z"
+    },
+    "lastOrder": null,
+    "orderHistory": [
+      {
+        "id": "ord_wf_20260926",
+        "merchant": "Whole Foods Market",
+        "date": "2026-09-26",
+        "total": 42.18,
+        "itemCount": 7,
+        "occasion": "Sunday family dinner",
+        "status": "delivered"
+      },
+      {
+        "id": "ord_af_20261010",
+        "merchant": "Amazon Fresh",
+        "date": "2026-10-10",
+        "total": 28.74,
+        "itemCount": 5,
+        "occasion": "Pantry restock",
+        "status": "delivered"
+      },
+      {
+        "id": "ord_af_20260912",
+        "merchant": "Amazon Fresh",
+        "date": "2026-09-12",
+        "total": 23.63,
+        "itemCount": 4,
+        "occasion": "Cold recovery kit",
+        "status": "delivered"
+      }
+    ]
+  },
+  "media": {
+    "queuedPlaylist": {
+      "id": "playlist_latin_jazz_dinner",
+      "name": "Latin Jazz Dinner Party",
+      "provider": "Amazon Music",
+      "trackCount": 18,
+      "status": "queued",
+      "updatedAt": "2026-10-22T19:12:00.000Z"
+    },
+    "recentCarousels": []
+  },
+  "conversation": {
+    "summary": "The household planned Friday Taco Night for six, confirmed Ben needs strict gluten-free food, and left a draft taco cart ready for review.",
+    "turns": [
+      {
+        "id": "turn_seed_001",
+        "user": "Alexa, let's do Taco Night for six on Friday. Ben is gluten-free.",
+        "assistant": "Saved. Friday Taco Night for six is in your household plan. I'll keep every tortilla and seasoning gluten-free.",
+        "intent": "planning",
+        "timestamp": "2026-10-22T19:12:00.000Z"
+      },
+      {
+        "id": "turn_seed_002",
+        "user": "Alexa, what did we decide about Friday's dinner?",
+        "assistant": "Friday Taco Night for six at 6:30 PM on the patio, gluten-free for Ben, with a vegetarian option for Maya. Your draft cart is ready whenever you are.",
+        "intent": "recall",
+        "timestamp": "2026-10-23T16:05:00.000Z"
+      }
+    ],
+    "lastUserUtterance": "Alexa, what did we decide about Friday's dinner?",
+    "lastAlexaResponse": "Friday Taco Night for six at 6:30 PM on the patio, gluten-free for Ben, with a vegetarian option for Maya. Your draft cart is ready whenever you are.",
+    "lastIntent": "recall",
+    "updatedAt": "2026-10-23T16:05:00.000Z"
+  },
+  "facts": [
+    {
+      "id": "fact_ben_gluten",
+      "key": "ben_gluten_allergy",
+      "value": "Ben has a high-severity gluten allergy. Every bread, tortilla, and seasoning item must be certified gluten-free.",
+      "category": "safety",
+      "confidence": 0.99,
+      "createdAt": "2026-08-12T17:10:00.000Z",
+      "confirmedAt": "2026-10-18T18:40:00.000Z"
+    },
+    {
+      "id": "fact_maya_vegetarian",
+      "key": "maya_vegetarian",
+      "value": "Maya prefers vegetarian meals. Group dinners should always include a plant-based protein option.",
+      "category": "preference",
+      "confidence": 0.96,
+      "createdAt": "2026-08-12T17:12:00.000Z",
+      "confirmedAt": "2026-10-21T20:15:00.000Z"
+    },
+    {
+      "id": "fact_friday_taco_night",
+      "key": "friday_taco_night",
+      "value": "Friday Taco Night for six is planned for the patio at 6:30 PM, with warm string lights and a Latin jazz playlist.",
+      "category": "plan",
+      "confidence": 0.98,
+      "createdAt": "2026-10-22T19:12:00.000Z",
+      "confirmedAt": "2026-10-22T19:12:00.000Z"
+    },
+    {
+      "id": "fact_grocery_budget",
+      "key": "grocery_budget",
+      "value": "Keep routine grocery orders under $75. The cold recovery kit has a strict $25 cap.",
+      "category": "budget",
+      "confidence": 0.99,
+      "createdAt": "2026-09-04T16:00:00.000Z",
+      "confirmedAt": "2026-10-16T17:30:00.000Z"
+    },
+    {
+      "id": "fact_flight",
+      "key": "maya_flight",
+      "value": "Maya has an 8:00 AM flight to San Francisco on Monday. The household wants a 6:00 AM wake-up briefing with weather and traffic.",
+      "category": "schedule",
+      "confidence": 0.94,
+      "createdAt": "2026-10-19T21:05:00.000Z",
+      "confirmedAt": "2026-10-19T21:05:00.000Z"
+    },
+    {
+      "id": "fact_coffee",
+      "key": "coffee_preference",
+      "value": "The household prefers oat milk lattes using Oatly Barista oat milk.",
+      "category": "preference",
+      "confidence": 0.88,
+      "createdAt": "2026-08-28T15:22:00.000Z",
+      "confirmedAt": "2026-09-30T14:10:00.000Z"
+    }
+  ]
+}

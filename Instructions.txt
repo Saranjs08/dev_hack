@@ -1,0 +1,43 @@
+You are building a complete, working hackathon submission repository named `lexaflow-alexa-plus-mcp` for the "Build, Ship, Shape: Amazon Developer Hackathon" (Alexa+ Primary Track & AWS Builder Mini Challenge).
+
+Build a complete, self-contained Node.js (Express) backend + rich Single-Page Frontend application that runs out-of-the-box with `npm install && npm start` on `http://localhost:3000`.
+
+### CORE CONCEPT: LexaFlow (Stateful Multi-Service MCP & Multimodal Alexa+ Agent)
+LexaFlow transforms Alexa+ from a single-turn Q&A voice assistant into a **Context-Aware, Cross-Session Household & Commerce Orchestrator** powered by:
+1. **MCP Spec `2025-11-25` Streamable HTTP Server (`/mcp`)**: Implements JSON-RPC 2.0 over Streamable HTTP (`POST /mcp` and `GET /mcp` SSE stream) supporting `initialize` (returning `protocolVersion: "2025-11-25"`), `tools/list`, `tools/call`, `resources/list`, `resources/read`, and `prompts/list`.
+2. **Alexa+ Agent Skill (`skills/lexaflow-orchestrator/SKILL.md`)**: Follows the open Agent Skills specification with YAML frontmatter and orchestration instructions.
+3. **AWS Bedrock Runtime Integration (`@aws-sdk/client-bedrock-runtime`)**: Uses `BedrockRuntimeClient` and `ConverseCommand` (targeting `anthropic.claude-3-5-sonnet-20241022-v2:0` or `amazon.nova-pro-v1:0`) to orchestrate multi-tool workflows, WITH an automatic, deterministic Smart Agentic Fallback Engine when `AWS_ACCESS_KEY_ID` is not set—so the app works 100% reliably out-of-the-box for judges and live demos without requiring cloud credentials.
+4. **Simulated Alexa+ Multimodal Experience (Echo Show UI + Live Developer Telemetry)**:
+   - Left Panel: Simulated **Echo Show 15 / Alexa+ Multimodal Display** featuring:
+     - Animated Alexa+ ambient glowing orb & Web Speech API voice synthesis (speaks responses aloud with a mute toggle) + microphone speech-to-text input.
+     - **Rich Media Carousels**: Horizontal scrollable cards for recipes, music playlists, and smart home camera/device feeds.
+     - **Interactive Voice Purchasing Cards**: Smart cart builder with dietary/allergy badge verification, item swap buttons, and a 1-Click "Confirm Alexa+ Voice Purchase" button that updates order state.
+     - **1-Click Demo Scenario Buttons** at the top so the user/judge can trigger complex multi-service workflows in one click:
+       1. *"Alexa, host Taco Night for 6 on Friday—Ben is gluten-free, set patio lights to warm at 7 PM, and queue Latin Jazz."*
+       2. *"Alexa, I'm feeling under the weather and have an 8 AM flight—adjust bedroom climate, reorder my cold recovery kit under $25, and set a wake-up briefing."*
+       3. *"Alexa, what did we decide about Friday's dinner, and swap the tortillas for organic corn shells."* (Demonstrates cross-session state persistence & cart mutation!)
+   - Right Panel: **Live MCP `2025-11-25` Streamable HTTP & AWS Bedrock Telemetry Inspector**:
+     - Tab 1: **Live MCP JSON-RPC Stream** (shows the exact `2025-11-25` request/response payloads for `tools/call` and `resources/read` with latency badges).
+     - Tab 2: **Persistent Cross-Session Memory Graph** (shows `data/session_memory.json` updating in real time: household dietary profiles, budget caps, active smart home scenes, and cart state—with a button to inspect/reset session state).
+     - Tab 3: **Multi-Service Execution DAG** (visual step-by-step progress across IoT Smart Home, Amazon Fresh Commerce Cart, Media Carousel Renderer, and Household Memory).
+
+### REQUIRED REPOSITORY STRUCTURE
+Generate all of the following files completely (no placeholders or TODOs):
+1. `LICENSE` — Full MIT License text (strictly required by hackathon rules for public repos).
+2. `package.json` — Include `express`, `cors`, `@aws-sdk/client-bedrock-runtime`, and `uuid`. Include `"start": "node src/server.js"` and `"test": "node tests/verify-mcp.js"`.
+3. `src/mcp-server.js` — Full MCP `2025-11-25` Streamable HTTP router mounted at `/mcp`:
+   - Exposes 4 MCP tools:
+     - `memory_get_or_update` (manages persistent cross-session household preferences, allergies, and context in `data/session_memory.json`)
+     - `commerce_build_and_purchase_cart` (builds/modifies an Amazon Fresh/Whole Foods cart filtered by household allergies and budget, returns structured product card items with prices, ratings, and dietary tags)
+     - `smarthome_orchestrate_scene` (configures Echo/Ring/Matter lighting, thermostat, and security states)
+     - `media_render_multimodal_carousel` (returns structured APL-style multimodal carousel cards for music, video guides, and routines)
+   - Exposes MCP resources (`memory://household/profile`, `memory://commerce/active-cart`, `telemetry://mcp/recent-calls`).
+4. `src/bedrock-agent.js` — Imports `@aws-sdk/client-bedrock-runtime` (`BedrockRuntimeClient`, `ConverseCommand`), formats the MCP tools into Bedrock `toolConfig`, executes multi-step tool orchestration, and gracefully falls back to a rich, realistic multi-step orchestration engine if AWS credentials are not present in the environment.
+5. `src/server.js` — Express server serving static frontend from `public/`, mounting `/mcp` (Streamable HTTP JSON-RPC + SSE), `/api/chat` (triggers the agentic workflow and calls the MCP tools internally via the MCP handler), `/api/purchase/confirm` (completes 1-click voice checkout in persistent state), and `/api/state` (returns current cross-session memory and MCP logs).
+6. `data/session_memory.json` — Pre-populated initial cross-session memory (e.g., Household members, dietary preferences, connected Echo/Ring devices, past orders).
+7. `skills/lexaflow-orchestrator/SKILL.md` — Valid Agent Skill specification file with YAML frontmatter (`name`, `description`, `version`, `mcp_version: "2025-11-25"`) and detailed multi-service orchestration instructions for Alexa+.
+8. `public/index.html`, `public/styles.css`, `public/app.js` — Visually stunning dark-mode UI (Amazon Alexa+ cyan/indigo glow aesthetic, responsive split-screen layout, animated voice waveform, horizontal scrollable carousels, interactive purchase confirmation cards with toast notifications, and syntax-highlighted JSON-RPC inspector).
+9. `tests/verify-mcp.js` — Automated verification script that starts/queries the MCP server methods (`initialize`, `tools/list`, `tools/call`) and prints PASS checks so judges can verify functionality in 2 seconds.
+10. `README.md` — Comprehensive documentation with architecture diagram (ASCII/Mermaid), MCP `2025-11-25` Streamable HTTP specification details, AWS Bedrock integration guide, and 2-step quickstart.
+
+After creating all files, run `npm install`, run `npm test` to verify all MCP tools pass, and start the server to confirm zero errors.

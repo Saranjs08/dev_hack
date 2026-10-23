@@ -1,0 +1,40 @@
+{
+  "name": "lexaflow-alexa-plus-mcp",
+  "version": "1.0.0",
+  "description": "LexaFlow: a stateful multi-service MCP 2025-11-25 server and multimodal Alexa+ simulator powered by AWS Bedrock.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node tests/verify-mcp.js"
+  },
+  "keywords": [
+    "alexa-plus",
+    "mcp",
+    "model-context-protocol",
+    "amazon-bedrock",
+    "aws",
+    "streamable-http",
+    "agent-skills",
+    "json-rpc"
+  ],
+  "author": "Hareeshwar N K",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hareeshwar-N-K/lexaflow-alexa-plus-mcp.git"
+  },
+  "homepage": "https://github.com/Hareeshwar-N-K/lexaflow-alexa-plus-mcp",
+  "bugs": {
+    "url": "https://github.com/Hareeshwar-N-K/lexaflow-alexa-plus-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.700.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "uuid": "^11.1.1"
+  }
+}
