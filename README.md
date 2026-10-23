@@ -705,12 +705,6 @@ curl -s http://localhost:3000/mcp
 
 ---
 
-## License
-
-MIT © 2026 Hareeshwar N K. See [LICENSE](LICENSE).
-
----
-
 <p align="center">
   <strong>LexaFlow</strong> · Stateful household intelligence for Alexa+<br />
   MCP 2025-11-25 · AWS Bedrock Converse · Agent Skills · Multimodal commerce
