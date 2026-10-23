@@ -1,0 +1,51 @@
+## 💡 Inspiration
+Most voice assistants still operate in a **stateless, single-turn loop**: you ask for the weather, or you set a single timer, and the context evaporates the moment the response ends. Yet real household requests are naturally **multi-intent, stateful, and multimodal**. 
+
+When someone says, *"Alexa, we're hosting Taco Night for 6 on Friday—remember Ben is gluten-free, warm up the patio lights at 7 PM, and put on a Latin jazz playlist,"* a single-turn wrapper fails. We built **LexaFlow** to demonstrate what **Alexa+** can truly become when powered by the **Model Context Protocol (`2025-11-25` Streamable HTTP)**, **Agent Skills**, and **Amazon Bedrock**: an autonomous household chief-of-staff that remembers context across sessions, orchestrates across multiple services in parallel, and renders rich **Multimodal Carousels & 1-Click Voice Purchasing Cards**.
+
+---
+
+## 🚀 What It Does
+**LexaFlow** combines a spec-compliant **Streamable HTTP MCP Server (`2025-11-25`)**, a modular **Alexa+ Agent Skill (`SKILL.md`)**, and an interactive **Echo Show / Alexa+ Multimodal Simulator**:
+
+1. **Autonomous Multi-Service Orchestration:** A single natural-language prompt decomposes into coordinated tool calls across four domains:
+   - **Persistent Household Memory (`memory_get_or_update`):** Reads and updates a cross-session household graph (dietary restrictions, brand preferences, budget caps, and active plans).
+   - **Guardrailed Voice Commerce (`commerce_build_and_purchase_cart`):** Builds an allergy-filtered Amazon Fresh / Whole Foods cart, flags dietary conflicts automatically, and presents an interactive **1-Click Voice Purchase Card** on screen.
+   - **Smart Home Scene Automation (`smarthome_orchestrate_scene`):** Coordinates lighting, climate, and Ring/Echo routines tied to event schedules.
+   - **Multimodal Media & Carousels (`media_render_multimodal_carousel`):** Generates horizontal scrollable APL-style carousels for playlists, step-by-step culinary cards, and device statuses.
+2. **Cross-Session State Persistence:** Follow-up turns (even across browser refreshes or new sessions) retain full awareness of prior decisions, allowing conversational mutations like *"Swap the tortillas for organic corn shells and keep the cart under $35."*
+3. **Live MCP `2025-11-25` Telemetry Inspector:** Alongside the simulated Echo Show display, developers and judges can inspect live JSON-RPC 2.0 Streamable HTTP packets (`initialize`, `tools/list`, `tools/call`, `resources/read`) and the **Amazon Bedrock Converse API** execution trace in real time.
+
+---
+
+## 🛠️ How We Built It
+- **MCP `2025-11-25` Streamable HTTP Transport:** Built in Node.js & Express on a unified `/mcp` endpoint supporting JSON-RPC 2.0 `POST` requests and Server-Sent Events (`GET` stream) for server-to-client notifications.
+- **AWS Bedrock Runtime (`@aws-sdk/client-bedrock-runtime`):** Integrated the Amazon Bedrock `ConverseCommand` API to pass our MCP tool schemas dynamically into foundation models (`Claude 3.5 Sonnet` / `Amazon Nova Pro`), complete with a deterministic local orchestration fallback so judges can test the repository immediately with zero cloud setup friction.
+- **Context Relevance & Budget Optimization Model:** To decide which historical household facts to inject into the active Alexa+ prompt window without exceeding latency budgets, we score each stored memory fact $m_i$ using a time-decayed utility function:
+
+$$U(m_i, q) = \alpha \cdot \text{sim}(m_i, q) + \beta \cdot e^{-\lambda \Delta t_i} + \gamma \cdot \mathbb{I}_{\text{safety}}(m_i)$$
+
+where $\text{sim}(m_i, q)$ measures semantic overlap with the current utterance $q$, $\Delta t_i$ is the elapsed time since fact $m_i$ was confirmed, and $\mathbb{I}_{\text{safety}}(m_i)$ prioritizes critical household constraints such as severe food allergies or spending caps.
+
+---
+
+## 🚧 Challenges We Ran Into
+- **Synchronizing Voice Output with Multimodal UI Cards:** In a voice-first + screen-assisted experience like Echo Show, speaking a 10-item grocery list aloud is fatiguing. We designed the Agent Skill instructions so Alexa+ speaks a concise, natural summary aloud while pushing the high-density details (itemized prices, allergy badges, and swap actions) to the visual **Purchasing Card** and **Media Carousel**.
+- **Streamable HTTP State Alignment:** Ensuring that tool mutations triggered via direct UI taps (like clicking *"Confirm Voice Purchase"* on the Echo Show card) immediately reflect inside the MCP resource URI (`memory://commerce/active-cart`) for the next voice turn required a unified event-sourced state store.
+
+---
+
+## 🏆 Accomplishments That We're Proud Of
+- Delivering a **zero-friction, instant-run Alexa+ simulator and real MCP `2025-11-25` server** in a single cohesive codebase.
+- Moving far beyond a single-turn Q&A bot to showcase **cross-session memory, autonomous multi-service tool chaining, voice commerce guardrails, and multimodal carousels** working together seamlessly.
+
+---
+
+## 📚 What We Learned
+- How the **MCP `2025-11-25` Streamable HTTP** specification simplifies stateless/stateful hybrid deployments compared to legacy stdio-only transports.
+- Designing agentic tool schemas where safety guardrails (such as explicit purchase confirmation tokens and dietary constraint validation) are enforced at the MCP protocol layer rather than relying solely on LLM prompt adherence.
+
+---
+
+## 🔮 What's Next for LexaFlow
+- Expanding cross-device handoffs so an orchestration started on **Alexa+** can push ambient reminders to wearable endpoints and display live arrival PIP feeds on **Fire TV** and **Ring**.
