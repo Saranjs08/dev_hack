@@ -715,5 +715,3 @@ MIT © 2026 Hareeshwar N K. See [LICENSE](LICENSE).
   <strong>LexaFlow</strong> · Stateful household intelligence for Alexa+<br />
   MCP 2025-11-25 · AWS Bedrock Converse · Agent Skills · Multimodal commerce
 </p>
-#   l e x a _ f l o w  
- 
